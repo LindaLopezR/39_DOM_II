@@ -7,7 +7,7 @@ function validateForm(){
 	var apellido = document.getElementById('lastname').value;
 	var correo = document.getElementById('input-email').value;
 	var password = document.getElementById('input-password').value;
-	// var indice = document.getElementById("opciones").selectedIndex;
+	var indice = document.getElementById("opciones").selectedIndex;
 	letras = /^[A-Z][a-zA-Z]*$/;
 	expresion = /\w+@+\w+\.+[a-z]/;
 	// if(nombre === "" || apellido === "" || correo === "" || password === ""){
@@ -43,10 +43,16 @@ function validateForm(){
 		validacion.appendChild(document.createTextNode("Correo no válido")); 
 		document.getElementById('input-email').parentElement.appendChild(validacion);
 	}
-	if(password.length<6){
+	if(password.length<6 || (password==="password" || password==="123456" || password==="098754")){
 		var validacion = document.createElement('span');
 		validacion.setAttribute("class","falla");
 		validacion.appendChild(document.createTextNode("Contraseña no válida")); 
 		document.getElementById('input-password').parentElement.appendChild(validacion);
+	}
+	if(indice == 0){
+		var validacion = document.createElement('span');
+		validacion.setAttribute("class","falla");
+		validacion.appendChild(document.createTextNode("Escoge al menos una bici")); 
+	 	document.getElementById('opciones').parentElement.appendChild(validacion);		
 	}
 }
